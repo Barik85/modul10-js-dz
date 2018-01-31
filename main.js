@@ -88,10 +88,11 @@ let targetHit = 0;
 document.body.addEventListener('click', timerStart); 
 
 let resultBox = document.querySelector('.best-result');
-resultBox.textContent = ("Лучший результат: " + localStorage.getItem("bestResult")) || " ";
+resultBox.textContent = ("Лучший результат: " + localStorage.getItem("bestResult") + 
+" символов/с") || " ";
 const resultInput = () => {
   resultBox.textContent = 
-  ("Лучший результат: " + localStorage.getItem("bestResult")) || " ";
+  ("Лучший результат: " + localStorage.getItem("bestResult") + " символов/с" )|| " ";
 }
 
 const countKPS = (event) => {
@@ -100,12 +101,10 @@ const countKPS = (event) => {
     if (event.target.classList.contains('key') && symbol == item) {
       arr.splice(i, 1);
       targetHit++;
-      console.log(arr.length);
     }
   });
   if (answerArr.length < 1) {
     clearInterval(timerID);
-    console.log('все символы совпали');
     targetHit = targetHit / timerOutput.innerHTML;
     if (localStorage.getItem("bestResult") < targetHit) {
       localStorage.setItem("bestResult", targetHit);
@@ -147,9 +146,7 @@ const buttonPress = (event) => {
       default:
           key = event.code.slice(-1).toString().toLowerCase();
   }
-  // console.log(key);
-  // console.log(event);
-  // console.log(event.keyCode);
+ 
   
   TYPEAREA = document.querySelector('.type-area');
   const space = document.querySelector('.space');
@@ -172,12 +169,10 @@ const buttonPress = (event) => {
         if (key == item) {
           arr.splice(i, 1);
           targetHit++;
-          console.log(arr.length);
         }
       });    
       if (answerArr.length < 1) {
         clearInterval(timerID);
-        console.log('все символы совпали');
         targetHit = targetHit / timerOutput.innerHTML;
         if (localStorage.getItem("bestResult") < targetHit) {
           localStorage.setItem("bestResult", targetHit);
@@ -198,12 +193,10 @@ const countKPSforPC = (event) => {
     if (event.target.classList.contains('key') && symbol == item) {
       arr.splice(i, 1);
       targetHit++;
-      console.log(arr.length);
     }
   });
   if (answerArr.length < 1) {
     clearInterval(timerID);
-    console.log('все символы совпали');
     targetHit = targetHit / timerOutput.innerHTML;
     if (localStorage.getItem("bestResult") < targetHit) {
       localStorage.setItem("bestResult", targetHit);
